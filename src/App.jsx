@@ -258,62 +258,65 @@ function App() {
 
       {/* CTA Section */}
       <section className="cta-section">
-        <h2>Ready to Transform your Workflow?</h2>
-        <p>Join thousands of teams already using DigiTools</p>
-        <button className="btn-primary-large">Start Your Free Trial</button>
+        <h2>Ready To Transform Your Workflow?</h2>
+        <p>Join thousands of professionals who are already using DigiTools to work smarter. Start your free trial today.</p>
+        <div className="cta-buttons">
+          <button className="btn-primary">Explore Products</button>
+          <button className="btn-outline">View Pricing</button>
+        </div>
+        <p className="cta-footer">30-day free trial • No credit card required • Cancel anytime</p>
       </section>
 
       {/* Footer */}
       <footer className="footer">
         <div className="footer-content">
-          <div className="footer-section">
+          <div className="footer-section footer-brand">
             <h4>DigiTools</h4>
-            <ul>
-              <li><a href="#about">About Us</a></li>
-              <li><a href="#blog">Blog</a></li>
-              <li><a href="#careers">Careers</a></li>
-              <li><a href="#press">Press</a></li>
-            </ul>
+            <p>Premium digital tools for creative professionals and businesses. Work smarter with our suite of powerful tools.</p>
           </div>
           <div className="footer-section">
             <h4>Product</h4>
             <ul>
               <li><a href="#features">Features</a></li>
               <li><a href="#pricing">Pricing</a></li>
-              <li><a href="#security">Security</a></li>
-              <li><a href="#roadmap">Roadmap</a></li>
+              <li><a href="#templates">Templates</a></li>
+              <li><a href="#integrations">Integrations</a></li>
+            </ul>
+          </div>
+          <div className="footer-section">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#about">About</a></li>
+              <li><a href="#blog">Blog</a></li>
+              <li><a href="#careers">Careers</a></li>
+              <li><a href="#press">Press</a></li>
             </ul>
           </div>
           <div className="footer-section">
             <h4>Resources</h4>
             <ul>
               <li><a href="#docs">Documentation</a></li>
-              <li><a href="#tutorials">Tutorials</a></li>
+              <li><a href="#help">Help Center</a></li>
               <li><a href="#community">Community</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
           </div>
-          <div className="footer-section">
-            <h4>Legal</h4>
-            <ul>
-              <li><a href="#privacy">Privacy</a></li>
-              <li><a href="#terms">Terms</a></li>
-              <li><a href="#cookies">Cookies</a></li>
-              <li><a href="#compliance">Compliance</a></li>
-            </ul>
-          </div>
           <div className="footer-section social">
-            <h4>Follow Us</h4>
+            <h4>Social Links</h4>
             <div className="social-links">
-              <a href="#twitter">Twitter</a>
-              <a href="#linkedin">LinkedIn</a>
-              <a href="#github">GitHub</a>
-              <a href="#instagram">Instagram</a>
+              <a href="#twitter" className="social-icon">f</a>
+              <a href="#linkedin" className="social-icon">in</a>
+              <a href="#twitter" className="social-icon">𝕏</a>
             </div>
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; 2024 DigiTools. All rights reserved.</p>
+          <p>&copy; 2026 DigiTools. All rights reserved.</p>
+          <div className="footer-links">
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Service</a>
+            <a href="#cookies">Cookies</a>
+          </div>
         </div>
       </footer>
     </>
