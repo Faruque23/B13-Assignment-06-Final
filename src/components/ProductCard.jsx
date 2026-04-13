@@ -1,24 +1,20 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 
 export default function ProductCard({ product, onAddToCart }) {
-  const { id, name, description, price, period, tag, tagType, features, icon } = product;
+  const { id, name, description, price, period, tag, tagType, features, icon } = product
 
   const getBadgeColor = (type) => {
-    switch (type) {
-      case 'best-seller':
-        return 'bg-yellow-100 text-yellow-800';
-      case 'popular':
-        return 'bg-purple-100 text-purple-800';
-      case 'new':
-        return 'bg-green-100 text-green-800';
-      default:
-        return '';
+    const colors = {
+      'best-seller': 'bg-yellow-100 text-yellow-800',
+      'popular': 'bg-purple-100 text-purple-800',
+      'new': 'bg-green-100 text-green-800',
     }
-  };
+    return colors[type] || ''
+  }
 
   return (
     <div className="product-card">
-      {tag && (
+      {tag && tagType && (
         <span className={`product-badge ${getBadgeColor(tagType)}`}>
           {tag}
         </span>
@@ -45,7 +41,7 @@ export default function ProductCard({ product, onAddToCart }) {
         Buy Now
       </button>
     </div>
-  );
+  )
 }
 
 ProductCard.propTypes = {
@@ -61,4 +57,5 @@ ProductCard.propTypes = {
     icon: PropTypes.string.isRequired,
   }).isRequired,
   onAddToCart: PropTypes.func.isRequired,
-};
+}
+
