@@ -69,44 +69,108 @@ function App() {
       <section id="features" className="tools-section">
         <div className="section-header">
           <h2>Premium Digital Tools</h2>
-          <p>Everything you need to create, collaborate, and ship</p>
+          <p>Choose from our curated collection of premium digital products designed to boost your productivity and creativity.</p>
+        </div>
+        <div className="tools-filter">
+          <button className="filter-btn active">Products</button>
+          <button className="filter-btn">Cart (2)</button>
         </div>
         <div className="tools-grid">
           <div className="tool-card">
-            <div className="tool-icon">📊</div>
-            <h3>Analytics Hub</h3>
-            <p>Track performance metrics and gain insights into your workflow efficiency</p>
-            <button className="btn-card">Learn More →</button>
+            <span className="tool-badge best-seller">Best Seller</span>
+            <div className="tool-icon">✍️</div>
+            <h3>AI Writing Pro</h3>
+            <p>Generate high-quality content, ideas, and copy instantly with advanced AI.</p>
+            <div className="tool-price">
+              <span className="price">$29</span>
+              <span className="price-period">per</span>
+            </div>
+            <ul className="tool-features">
+              <li><span className="check">✓</span> Unlimited generations</li>
+              <li><span className="check">✓</span> 50+ writing templates</li>
+              <li><span className="check">✓</span> Grammar checker</li>
+            </ul>
+            <button className="btn-primary buy-btn">Buy Now</button>
           </div>
           <div className="tool-card">
+            <span className="tool-badge popular">Popular</span>
             <div className="tool-icon">🎨</div>
-            <h3>Design Studio</h3>
-            <p>Create stunning visuals with our intuitive design tools and templates</p>
-            <button className="btn-card">Learn More →</button>
+            <h3>Design Templates Pack</h3>
+            <p>2000+ premium templates for social media, presentations, and marketing materials.</p>
+            <div className="tool-price">
+              <span className="price">$69</span>
+              <span className="price-period">One-Time</span>
+            </div>
+            <ul className="tool-features">
+              <li><span className="check">✓</span> 2000+ templates</li>
+              <li><span className="check">✓</span> Monthly updates</li>
+              <li><span className="check">✓</span> Commercial use</li>
+            </ul>
+            <button className="btn-primary buy-btn">Buy Now</button>
           </div>
           <div className="tool-card">
-            <div className="tool-icon">👥</div>
-            <h3>Team Collaboration</h3>
-            <p>Work seamlessly with your team in real-time across projects</p>
-            <button className="btn-card">Learn More →</button>
+            <span className="tool-badge new">New</span>
+            <div className="tool-icon">📸</div>
+            <h3>Premium Stock Assets</h3>
+            <p>Access millions of royalty-free photos, videos, and graphics for your projects.</p>
+            <div className="tool-price">
+              <span className="price">$19</span>
+              <span className="price-period">per</span>
+            </div>
+            <ul className="tool-features">
+              <li><span className="check">✓</span> 10M+ assets</li>
+              <li><span className="check">✓</span> Commercial use</li>
+              <li><span className="check">✓</span> No attribution</li>
+            </ul>
+            <button className="btn-primary buy-btn">Buy Now</button>
           </div>
           <div className="tool-card">
-            <div className="tool-icon">⚡</div>
-            <h3>Smart Automation</h3>
-            <p>Automate repetitive tasks and focus on what matters most</p>
-            <button className="btn-card">Learn More →</button>
+            <span className="tool-badge popular">Popular</span>
+            <div className="tool-icon">⚙️</div>
+            <h3>Automation Toolkit</h3>
+            <p>Automate repetitive tasks and streamline your workflow with powerful tools.</p>
+            <div className="tool-price">
+              <span className="price">$79</span>
+              <span className="price-period">per</span>
+            </div>
+            <ul className="tool-features">
+              <li><span className="check">✓</span> 50+ automations</li>
+              <li><span className="check">✓</span> API access</li>
+              <li><span className="check">✓</span> Custom workflows</li>
+            </ul>
+            <button className="btn-primary buy-btn">Buy Now</button>
           </div>
           <div className="tool-card">
-            <div className="tool-icon">🔒</div>
-            <h3>Enterprise Security</h3>
-            <p>Bank-level security and compliance for your peace of mind</p>
-            <button className="btn-card">Learn More →</button>
+            <span className="tool-badge popular">Popular</span>
+            <div className="tool-icon">📄</div>
+            <h3>Resume Builder Pro</h3>
+            <p>Create professional resumes that land interviews with expert templates.</p>
+            <div className="tool-price">
+              <span className="price">$15</span>
+              <span className="price-period">One-Time</span>
+            </div>
+            <ul className="tool-features">
+              <li><span className="check">✓</span> 100+ templates</li>
+              <li><span className="check">✓</span> ATS optimization</li>
+              <li><span className="check">✓</span> Expert tips</li>
+            </ul>
+            <button className="btn-primary buy-btn">Buy Now</button>
           </div>
           <div className="tool-card">
-            <div className="tool-icon">🚀</div>
-            <h3>Performance Tools</h3>
-            <p>Optimize and scale your digital products effortlessly</p>
-            <button className="btn-card">Learn More →</button>
+            <span className="tool-badge best-seller">Best Seller</span>
+            <div className="tool-icon">📱</div>
+            <h3>Social Media Content Kit</h3>
+            <p>Complete toolkit for creating engaging social media content across all platforms.</p>
+            <div className="tool-price">
+              <span className="price">$39</span>
+              <span className="price-period">per</span>
+            </div>
+            <ul className="tool-features">
+              <li><span className="check">✓</span> 5000+ assets</li>
+              <li><span className="check">✓</span> Scheduler included</li>
+              <li><span className="check">✓</span> Analytics dashboard</li>
+            </ul>
+            <button className="btn-primary buy-btn">Buy Now</button>
           </div>
         </div>
       </section>
