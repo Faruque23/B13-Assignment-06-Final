@@ -1,5 +1,6 @@
 import './App.css'
 
+
 function App() {
   return (
     <>
@@ -8,12 +9,18 @@ function App() {
         <div className="header-content">
           <div className="logo">DigiTools</div>
           <nav className="nav">
+            <a href="#products">Products</a>
             <a href="#features">Features</a>
             <a href="#pricing">Pricing</a>
-            <a href="#resources">Resources</a>
-            <a href="#company">Company</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#faq">FAQ</a>
           </nav>
-          <button className="btn-secondary">Sign in</button>
+          <div>
+            <button className="btn-secondary border-none"><i class="fa-solid fa-cart-shopping"></i></button>
+            <button className="btn-secondary border-none">Login</button>
+            <button className="btn-primary">Get Started</button>
+          </div>
+
         </div>
       </header>
 
