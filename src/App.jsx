@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import './App.css'
@@ -22,6 +22,15 @@ function App() {
   // State management
   const [cart, setCart] = useState([])
   const [activeTab, setActiveTab] = useState('products') // 'products' or 'cart'
+
+  // Memoized calculations for performance optimization
+  const cartTotal = useMemo(() => {
+    return cart.reduce((sum, item) => sum + item.price, 0)
+  }, [cart])
+
+  const cartItemCount = useMemo(() => {
+    return cart.length
+  }, [cart])
 
   /**
    * Add product to cart with toast notification
@@ -90,11 +99,11 @@ function App() {
           <div>
             <button 
               className="btn-secondary border-none cart-btn"
-              aria-label={`Shopping cart with ${cart.length} items`}
+              aria-label={`Shopping cart with ${cartItemCount} items`}
               onClick={() => setActiveTab('cart')}
             >
               <i className="fa-solid fa-cart-shopping" aria-hidden="true"></i>
-              {cart.length > 0 && <span className="cart-count" aria-label={`${cart.length} items in cart`}>{cart.length}</span>}
+              {cartItemCount > 0 && <span className="cart-count" aria-label={`${cartItemCount} items in cart`}>{cartItemCount}</span>}
             </button>
             <button className="btn-secondary border-none" aria-label="Login to account">Login</button>
             <button className="btn-primary" aria-label="Get started with DigiTools">Get Started</button>
@@ -168,7 +177,7 @@ function App() {
             aria-selected={activeTab === 'cart'}
             aria-controls="cart-panel"
           >
-            Cart ({cart.length})
+            Cart ({cartItemCount})
           </button>
         </div>
 
@@ -207,11 +216,11 @@ function App() {
                 <div className="cart-summary" role="region" aria-label="Order summary">
                   <div className="summary-row">
                     <span>Total Items:</span>
-                    <span aria-live="polite">{cart.length}</span>
+                    <span aria-live="polite">{cartItemCount}</span>
                   </div>
                   <div className="summary-row total">
                     <span>Total Price:</span>
-                    <span aria-live="polite">${cart.reduce((sum, item) => sum + item.price, 0).toFixed(2)}</span>
+                    <span aria-live="polite">${cartTotal.toFixed(2)}</span>
                   </div>
                   <button
                     className="btn-primary checkout-btn"
