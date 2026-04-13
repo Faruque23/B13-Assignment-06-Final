@@ -1,9 +1,57 @@
+import { useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import './App.css'
-
+import ProductCard from './components/ProductCard'
+import CartItem from './components/CartItem'
+import productsData from './data/products.json'
 
 function App() {
+  const [cart, setCart] = useState([])
+  const [activeTab, setActiveTab] = useState('products') // 'products' or 'cart'
+
+  const handleAddToCart = (product) => {
+    setCart([...cart, product])
+    toast.success(`${product.name} added to cart!`, {
+      position: 'bottom-right',
+      autoClose: 2000,
+    })
+  }
+
+  const handleRemoveFromCart = (productId) => {
+    const product = cart.find(item => item.id === productId)
+    const itemIndex = cart.findIndex(item => item.id === productId)
+    if (itemIndex > -1) {
+      const newCart = cart.filter((_, index) => index !== itemIndex)
+      setCart(newCart)
+      toast.info(`${product?.name} removed from cart`, {
+        position: 'bottom-right',
+        autoClose: 2000,
+      })
+    }
+  }
+
+  const handleProceedToCheckout = () => {
+    if (cart.length === 0) {
+      toast.warning('Your cart is empty!', {
+        position: 'bottom-right',
+        autoClose: 2000,
+      })
+      return
+    }
+
+    toast.success('Proceeding to checkout! 🎉', {
+      position: 'bottom-right',
+      autoClose: 2000,
+    })
+    setCart([])
+    setActiveTab('products')
+  }
+
   return (
     <>
+      <ToastContainer />
+      
       {/* Header */}
       <header className="header">
         <div className="header-content">
@@ -16,11 +64,13 @@ function App() {
             <a href="#faq">FAQ</a>
           </nav>
           <div>
-            <button className="btn-secondary border-none"><i class="fa-solid fa-cart-shopping"></i></button>
+            <button className="btn-secondary border-none cart-btn">
+              <i className="fa-solid fa-cart-shopping"></i>
+              {cart.length > 0 && <span className="cart-count">{cart.length}</span>}
+            </button>
             <button className="btn-secondary border-none">Login</button>
             <button className="btn-primary">Get Started</button>
           </div>
-
         </div>
       </header>
 
@@ -65,113 +115,112 @@ function App() {
         </div>
       </section>
 
-      {/* Premium Tools Section */}
+      {/* Products & Cart Toggle Section */}
+      <section className="products-cart-section">
+        <div className="section-header">
+          <h2>Our Products</h2>
+          <p>Choose from our premium digital tools to boost your productivity</p>
+        </div>
+
+        {/* Toggle Buttons */}
+        <div className="toggle-buttons">
+          <button
+            className={`toggle-btn ${activeTab === 'products' ? 'active' : ''}`}
+            onClick={() => setActiveTab('products')}
+          >
+            Products
+          </button>
+          <button
+            className={`toggle-btn ${activeTab === 'cart' ? 'active' : ''}`}
+            onClick={() => setActiveTab('cart')}
+          >
+            Cart ({cart.length})
+          </button>
+        </div>
+
+        {/* Products Section */}
+        {activeTab === 'products' && (
+          <div className="products-grid">
+            {productsData.map(product => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                onAddToCart={handleAddToCart}
+              />
+            ))}
+          </div>
+        )}
+
+        {/* Cart Section */}
+        {activeTab === 'cart' && (
+          <div className="cart-section">
+            {cart.length === 0 ? (
+              <div className="empty-cart">
+                <p>Your cart is empty</p>
+                <p className="empty-text">Start adding products to your cart!</p>
+              </div>
+            ) : (
+              <>
+                <div className="cart-items">
+                  {cart.map((item, index) => (
+                    <CartItem
+                      key={index}
+                      item={item}
+                      onRemove={handleRemoveFromCart}
+                    />
+                  ))}
+                </div>
+                <div className="cart-summary">
+                  <div className="summary-row">
+                    <span>Total Items:</span>
+                    <span>{cart.length}</span>
+                  </div>
+                  <div className="summary-row total">
+                    <span>Total Price:</span>
+                    <span>${cart.reduce((sum, item) => sum + item.price, 0).toFixed(2)}</span>
+                  </div>
+                  <button
+                    className="btn-primary checkout-btn"
+                    onClick={handleProceedToCheckout}
+                  >
+                    Proceed to Checkout
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+        )}
+      </section>
+
+      {/* Premium Tools Showcase Section */}
       <section id="features" className="tools-section">
         <div className="section-header">
-          <h2>Premium Digital Tools</h2>
-          <p>Choose from our curated collection of premium digital products designed to boost your productivity and creativity.</p>
-        </div>
-        <div className="tools-filter">
-          <button className="filter-btn active">Products</button>
-          <button className="filter-btn">Cart (2)</button>
+          <h2>Featured Tools</h2>
+          <p>Handpicked tools from our collection that deliver exceptional value</p>
         </div>
         <div className="tools-grid">
-          <div className="tool-card">
-            <span className="tool-badge best-seller">Best Seller</span>
-            <div className="tool-icon">✍️</div>
-            <h3>AI Writing Pro</h3>
-            <p>Generate high-quality content, ideas, and copy instantly with advanced AI.</p>
-            <div className="tool-price">
-              <span className="price">$29</span>
-              <span className="price-period">per</span>
+          {productsData.slice(0, 6).map(product => (
+            <div key={product.id} className="tool-card">
+              {product.tagType && (
+                <span className={`tool-badge ${product.tagType}`}>
+                  {product.tag}
+                </span>
+              )}
+              <div className="tool-icon">{product.icon}</div>
+              <h3>{product.name}</h3>
+              <p>{product.description}</p>
+              <div className="tool-price">
+                <span className="price">${product.price}</span>
+                <span className="price-period">{product.period}</span>
+              </div>
+              <ul className="tool-features">
+                {product.features.map((feature, idx) => (
+                  <li key={idx}><span className="check">✓</span>{feature}</li>
+                ))}
+              </ul>
+              <button className="btn-primary buy-btn" onClick={() => handleAddToCart(product)}>Buy Now</button>
             </div>
-            <ul className="tool-features">
-              <li><span className="check">✓</span> Unlimited generations</li>
-              <li><span className="check">✓</span> 50+ writing templates</li>
-              <li><span className="check">✓</span> Grammar checker</li>
-            </ul>
-            <button className="btn-primary buy-btn">Buy Now</button>
-          </div>
-          <div className="tool-card">
-            <span className="tool-badge popular">Popular</span>
-            <div className="tool-icon">🎨</div>
-            <h3>Design Templates Pack</h3>
-            <p>2000+ premium templates for social media, presentations, and marketing materials.</p>
-            <div className="tool-price">
-              <span className="price">$69</span>
-              <span className="price-period">One-Time</span>
-            </div>
-            <ul className="tool-features">
-              <li><span className="check">✓</span> 2000+ templates</li>
-              <li><span className="check">✓</span> Monthly updates</li>
-              <li><span className="check">✓</span> Commercial use</li>
-            </ul>
-            <button className="btn-primary buy-btn">Buy Now</button>
-          </div>
-          <div className="tool-card">
-            <span className="tool-badge new">New</span>
-            <div className="tool-icon">📸</div>
-            <h3>Premium Stock Assets</h3>
-            <p>Access millions of royalty-free photos, videos, and graphics for your projects.</p>
-            <div className="tool-price">
-              <span className="price">$19</span>
-              <span className="price-period">per</span>
-            </div>
-            <ul className="tool-features">
-              <li><span className="check">✓</span> 10M+ assets</li>
-              <li><span className="check">✓</span> Commercial use</li>
-              <li><span className="check">✓</span> No attribution</li>
-            </ul>
-            <button className="btn-primary buy-btn">Buy Now</button>
-          </div>
-          <div className="tool-card">
-            <span className="tool-badge popular">Popular</span>
-            <div className="tool-icon">⚙️</div>
-            <h3>Automation Toolkit</h3>
-            <p>Automate repetitive tasks and streamline your workflow with powerful tools.</p>
-            <div className="tool-price">
-              <span className="price">$79</span>
-              <span className="price-period">per</span>
-            </div>
-            <ul className="tool-features">
-              <li><span className="check">✓</span> 50+ automations</li>
-              <li><span className="check">✓</span> API access</li>
-              <li><span className="check">✓</span> Custom workflows</li>
-            </ul>
-            <button className="btn-primary buy-btn">Buy Now</button>
-          </div>
-          <div className="tool-card">
-            <span className="tool-badge popular">Popular</span>
-            <div className="tool-icon">📄</div>
-            <h3>Resume Builder Pro</h3>
-            <p>Create professional resumes that land interviews with expert templates.</p>
-            <div className="tool-price">
-              <span className="price">$15</span>
-              <span className="price-period">One-Time</span>
-            </div>
-            <ul className="tool-features">
-              <li><span className="check">✓</span> 100+ templates</li>
-              <li><span className="check">✓</span> ATS optimization</li>
-              <li><span className="check">✓</span> Expert tips</li>
-            </ul>
-            <button className="btn-primary buy-btn">Buy Now</button>
-          </div>
-          <div className="tool-card">
-            <span className="tool-badge best-seller">Best Seller</span>
-            <div className="tool-icon">📱</div>
-            <h3>Social Media Content Kit</h3>
-            <p>Complete toolkit for creating engaging social media content across all platforms.</p>
-            <div className="tool-price">
-              <span className="price">$39</span>
-              <span className="price-period">per</span>
-            </div>
-            <ul className="tool-features">
-              <li><span className="check">✓</span> 5000+ assets</li>
-              <li><span className="check">✓</span> Scheduler included</li>
-              <li><span className="check">✓</span> Analytics dashboard</li>
-            </ul>
-            <button className="btn-primary buy-btn">Buy Now</button>
-          </div>
+          ))}
         </div>
       </section>
 
