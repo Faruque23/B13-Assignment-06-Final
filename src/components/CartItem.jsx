@@ -23,20 +23,25 @@ export default function CartItem({ item, onRemove }) {
   const { id, name, price, period, icon } = item
 
   return (
-    <div className="cart-item">
+    <div className="cart-item" role="listitem">
       <div className="cart-item-content">
-        <div className="cart-item-icon">{icon}</div>
+        <div className="cart-item-icon" aria-hidden="true">{icon}</div>
         <div className="cart-item-info">
           <h4>{name}</h4>
-          <p className="cart-item-price">${price}</p>
-          <p className="cart-item-period">{period}</p>
+          <p className="cart-item-price" aria-label={`Price: $${price}`}>${price}</p>
+          <p className="cart-item-period" aria-label={`Billing period: ${period}`}>{period}</p>
         </div>
       </div>
       <button 
         className="btn-remove"
         onClick={() => onRemove(id)}
         aria-label={`Remove ${name} from cart`}
+        title={`Remove ${name}`}
       >
+        ✕
+      </button>
+    </div>
+  )
         Remove
       </button>
     </div>

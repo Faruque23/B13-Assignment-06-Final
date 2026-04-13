@@ -77,23 +77,27 @@ function App() {
       <ToastContainer />
       
       {/* Header */}
-      <header className="header">
+      <header className="header" role="banner">
         <div className="header-content">
-          <div className="logo">DigiTools</div>
-          <nav className="nav">
-            <a href="#products">Products</a>
-            <a href="#features">Features</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#testimonials">Testimonials</a>
-            <a href="#faq">FAQ</a>
+          <div className="logo" role="heading" aria-level={1}>DigiTools</div>
+          <nav className="nav" role="navigation" aria-label="Main navigation">
+            <a href="#products" aria-label="Navigate to Products section">Products</a>
+            <a href="#features" aria-label="Navigate to Features section">Features</a>
+            <a href="#pricing" aria-label="Navigate to Pricing section">Pricing</a>
+            <a href="#testimonials" aria-label="Navigate to Testimonials section">Testimonials</a>
+            <a href="#faq" aria-label="Navigate to FAQ section">FAQ</a>
           </nav>
           <div>
-            <button className="btn-secondary border-none cart-btn">
-              <i className="fa-solid fa-cart-shopping"></i>
-              {cart.length > 0 && <span className="cart-count">{cart.length}</span>}
+            <button 
+              className="btn-secondary border-none cart-btn"
+              aria-label={`Shopping cart with ${cart.length} items`}
+              onClick={() => setActiveTab('cart')}
+            >
+              <i className="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+              {cart.length > 0 && <span className="cart-count" aria-label={`${cart.length} items in cart`}>{cart.length}</span>}
             </button>
-            <button className="btn-secondary border-none">Login</button>
-            <button className="btn-primary">Get Started</button>
+            <button className="btn-secondary border-none" aria-label="Login to account">Login</button>
+            <button className="btn-primary" aria-label="Get started with DigiTools">Get Started</button>
           </div>
         </div>
       </header>
@@ -140,23 +144,29 @@ function App() {
       </section>
 
       {/* Products & Cart Toggle Section */}
-      <section className="products-cart-section">
+      <section className="products-cart-section" id="products" aria-label="Products and shopping cart section">
         <div className="section-header">
           <h2>Our Products</h2>
           <p>Choose from our premium digital tools to boost your productivity</p>
         </div>
 
         {/* Toggle Buttons */}
-        <div className="toggle-buttons">
+        <div className="toggle-buttons" role="tablist" aria-label="View options">
           <button
             className={`toggle-btn ${activeTab === 'products' ? 'active' : ''}`}
             onClick={() => setActiveTab('products')}
+            role="tab"
+            aria-selected={activeTab === 'products'}
+            aria-controls="products-panel"
           >
             Products
           </button>
           <button
             className={`toggle-btn ${activeTab === 'cart' ? 'active' : ''}`}
             onClick={() => setActiveTab('cart')}
+            role="tab"
+            aria-selected={activeTab === 'cart'}
+            aria-controls="cart-panel"
           >
             Cart ({cart.length})
           </button>
@@ -164,7 +174,7 @@ function App() {
 
         {/* Products Section */}
         {activeTab === 'products' && (
-          <div className="products-grid">
+          <div className="products-grid" id="products-panel" role="tabpanel" aria-labelledby="products-tab">
             {productsData.map(product => (
               <ProductCard
                 key={product.id}
@@ -177,15 +187,15 @@ function App() {
 
         {/* Cart Section */}
         {activeTab === 'cart' && (
-          <div className="cart-section">
+          <div className="cart-section" id="cart-panel" role="tabpanel" aria-labelledby="cart-tab">
             {cart.length === 0 ? (
-              <div className="empty-cart">
+              <div className="empty-cart" role="alert">
                 <p>Your cart is empty</p>
                 <p className="empty-text">Start adding products to your cart!</p>
               </div>
             ) : (
               <>
-                <div className="cart-items">
+                <div className="cart-items" role="list" aria-label="Shopping cart items">
                   {cart.map((item, index) => (
                     <CartItem
                       key={index}
@@ -194,14 +204,14 @@ function App() {
                     />
                   ))}
                 </div>
-                <div className="cart-summary">
+                <div className="cart-summary" role="region" aria-label="Order summary">
                   <div className="summary-row">
                     <span>Total Items:</span>
-                    <span>{cart.length}</span>
+                    <span aria-live="polite">{cart.length}</span>
                   </div>
                   <div className="summary-row total">
                     <span>Total Price:</span>
-                    <span>${cart.reduce((sum, item) => sum + item.price, 0).toFixed(2)}</span>
+                    <span aria-live="polite">${cart.reduce((sum, item) => sum + item.price, 0).toFixed(2)}</span>
                   </div>
                   <button
                     className="btn-primary checkout-btn"

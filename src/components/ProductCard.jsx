@@ -37,23 +37,23 @@ export default function ProductCard({ product, onAddToCart }) {
   }
 
   return (
-    <div className="product-card">
+    <article className="product-card" role="region" aria-label={`Product: ${name}`}>
       {tag && tagType && (
-        <span className={`product-badge ${getBadgeColor(tagType)}`}>
+        <span className={`product-badge ${getBadgeColor(tagType)}`} aria-label={`Product badge: ${tag}`}>
           {tag}
         </span>
       )}
-      <div className="product-icon">{icon}</div>
+      <div className="product-icon" aria-hidden="true">{icon}</div>
       <h3 className="product-name">{name}</h3>
       <p className="product-description">{description}</p>
       <div className="product-price">
-        <span className="price-amount">${price}</span>
-        <span className="price-period">/{period}</span>
+        <span className="price-amount" aria-label={`Price: $${price}`}>${price}</span>
+        <span className="price-period" aria-label={`Billing period: ${period}`}>/{period}</span>
       </div>
-      <ul className="product-features">
+      <ul className="product-features" aria-label={`Features of ${name}`}>
         {features.map((feature, index) => (
           <li key={index}>
-            <span className="feature-check">✓</span>
+            <span className="feature-check" aria-hidden="true">✓</span>
             {feature}
           </li>
         ))}
@@ -61,10 +61,11 @@ export default function ProductCard({ product, onAddToCart }) {
       <button 
         className="btn-primary buy-btn"
         onClick={() => onAddToCart(product)}
+        aria-label={`Add ${name} to cart for $${price} per ${period}`}
       >
         Buy Now
       </button>
-    </div>
+    </article>
   )
 }
 
