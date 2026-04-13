@@ -25,25 +25,25 @@ function App() {
       </header>
 
       {/* Hero Section */}
-      <section className="hero-section">
-        <div className="hero-content">
-          <div className="hero-text">
-            <h1>Supercharge Your<br />Digital Workflow</h1>
-            <p>Streamline your creative process with powerful digital tools designed for modern teams</p>
+      <section className="hero-section items-center">
+        <div className="hero-content flex items-start content-center gap-8">
+          <div className="hero-text flex flex-col gap-4 items-start">
+            <div className='hero-text items-start gap-2'>
+              <span className="hero-badge">New: AI-Powered Tools Available</span>
+              <h1>Supercharge Your<br />Digital Workflow</h1>
+              <p>Access premium AI tools, design assets, templates, and productivity software—all in one place. Start creating faster today.</p>
+            </div>
+
             <div className="hero-buttons">
-              <button className="btn-primary">Get Started</button>
-              <button className="btn-outline">Learn More</button>
+              <button className="btn-primary">Explore Products</button>
+              <button className="btn-outline">Watch Demo</button>
             </div>
           </div>
-          <div className="hero-image">
-            <div className="hero-img-placeholder">
-              <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="200" cy="150" r="100" fill="#e8e8ff" opacity="0.5" />
-                <circle cx="250" cy="120" r="60" fill="#d4d4f0" opacity="0.7" />
-                <circle cx="150" cy="180" r="50" fill="#c9c9ff" opacity="0.6" />
-              </svg>
-            </div>
-          </div>
+
+        </div>
+        <div className="hero-image">
+          <img src="../src/assets/banner.png" alt="Hero Image" />
+
         </div>
       </section>
 
