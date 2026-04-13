@@ -6,10 +6,27 @@ import ProductCard from './components/ProductCard'
 import CartItem from './components/CartItem'
 import productsData from './data/products.json'
 
+/**
+ * DigiTools - Digital Product Marketplace
+ * 
+ * A modern e-commerce platform for selling digital products
+ * Features:
+ * - Interactive product catalog with filtering
+ * - Shopping cart with add/remove functionality
+ * - Real-time notifications using React-Toastify
+ * - Responsive design for all devices
+ * - Total price calculation
+ */
+
 function App() {
+  // State management
   const [cart, setCart] = useState([])
   const [activeTab, setActiveTab] = useState('products') // 'products' or 'cart'
 
+  /**
+   * Add product to cart with toast notification
+   * @param {Object} product - Product object from JSON data
+   */
   const handleAddToCart = (product) => {
     setCart([...cart, product])
     toast.success(`${product.name} added to cart!`, {
@@ -18,6 +35,10 @@ function App() {
     })
   }
 
+  /**
+   * Remove product from cart by first occurrence
+   * @param {number} productId - ID of product to remove
+   */
   const handleRemoveFromCart = (productId) => {
     const product = cart.find(item => item.id === productId)
     const itemIndex = cart.findIndex(item => item.id === productId)
@@ -31,6 +52,9 @@ function App() {
     }
   }
 
+  /**
+   * Proceed to checkout - clears cart and returns to product view
+   */
   const handleProceedToCheckout = () => {
     if (cart.length === 0) {
       toast.warning('Your cart is empty!', {

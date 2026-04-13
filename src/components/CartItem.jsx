@@ -1,5 +1,24 @@
 import PropTypes from 'prop-types'
 
+/**
+ * CartItem Component
+ * 
+ * Displays a single item in the shopping cart with:
+ * - Product icon/emoji
+ * - Product name
+ * - Price and billing period
+ * - Remove from cart button
+ * - Accessible remove button with aria-label
+ * 
+ * @param {Object} item - Cart item data object
+ * @param {number} item.id - Unique product identifier
+ * @param {string} item.name - Product name
+ * @param {number} item.price - Product price
+ * @param {string} item.period - Billing period (monthly/one-time)
+ * @param {string} item.icon - Product icon (emoji)
+ * @param {Function} onRemove - Callback function triggered on remove button click
+ */
+
 export default function CartItem({ item, onRemove }) {
   const { id, name, price, period, icon } = item
 

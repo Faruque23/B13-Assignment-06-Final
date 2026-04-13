@@ -1,5 +1,29 @@
 import PropTypes from 'prop-types'
 
+/**
+ * ProductCard Component
+ * 
+ * Displays individual product information with:
+ * - Product icon/emoji
+ * - Name and description
+ * - Price and billing period
+ * - Feature list
+ * - Product badge (new, popular, best-seller)
+ * - Add to cart functionality
+ * 
+ * @param {Object} product - Product data object
+ * @param {number} product.id - Unique product identifier
+ * @param {string} product.name - Product name
+ * @param {string} product.description - Short product description
+ * @param {number} product.price - Product price
+ * @param {string} product.period - Billing period (monthly/one-time)
+ * @param {string} product.icon - Product icon (emoji)
+ * @param {string} product.tag - Badge label
+ * @param {string} product.tagType - Badge type (best-seller/popular/new)
+ * @param {Array} product.features - Array of feature strings
+ * @param {Function} onAddToCart - Callback function triggered on add to cart
+ */
+
 export default function ProductCard({ product, onAddToCart }) {
   const { id, name, description, price, period, tag, tagType, features, icon } = product
 
