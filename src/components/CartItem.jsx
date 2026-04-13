@@ -42,10 +42,17 @@ export default function CartItem({ item, onRemove }) {
       </button>
     </div>
   )
-        Remove
-      </button>
-    </div>
-  )
+}
+
+CartItem.propTypes = {
+  item: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    period: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired,
+  }).isRequired,
+  onRemove: PropTypes.func.isRequired,
 }
 
 CartItem.propTypes = {
