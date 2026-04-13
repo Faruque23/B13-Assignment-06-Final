@@ -179,22 +179,26 @@ function App() {
       <section className="steps-section">
         <div className="section-header">
           <h2>Get Started in 3 Steps</h2>
+          <p>Start using premium digital tools in minutes, not hours</p>
         </div>
         <div className="steps-container">
           <div className="step">
-            <div className="step-number">1</div>
-            <h3>Create an Account</h3>
-            <p>Sign up in seconds and get instant access to all features</p>
+            <div className="step-number">01</div>
+            <div className="step-icon">👤</div>
+            <h3>Create Account</h3>
+            <p>Sign up for free in seconds. No credit card required to get started.</p>
           </div>
           <div className="step">
-            <div className="step-number">2</div>
-            <h3>Onboard Your Team</h3>
-            <p>Invite team members and set up your workspace</p>
+            <div className="step-number">02</div>
+            <div className="step-icon">📦</div>
+            <h3>Choose Products</h3>
+            <p>Browse our catalog and select the tools that fit your needs.</p>
           </div>
           <div className="step">
-            <div className="step-number">3</div>
+            <div className="step-number">03</div>
+            <div className="step-icon">🚀</div>
             <h3>Start Creating</h3>
-            <p>Begin collaborating and shipping amazing products</p>
+            <p>Download and start using your premium tools immediately.</p>
           </div>
         </div>
       </section>
@@ -203,50 +207,51 @@ function App() {
       <section id="pricing" className="pricing-section">
         <div className="section-header">
           <h2>Simple, Transparent Pricing</h2>
-          <p>Choose the plan that fits your needs</p>
+          <p>Choose the plan that fits your needs. Upgrade or downgrade anytime</p>
         </div>
         <div className="pricing-container">
           <div className="pricing-card">
             <h3>Starter</h3>
-            <div className="price">$0</div>
-            <p className="price-subtitle">Forever free</p>
+            <p className="price-description">Perfect for getting started</p>
+            <div className="price">$0<span>/Month</span></div>
             <ul className="features-list">
-              <li>✓ Up to 5 projects</li>
-              <li>✓ Basic collaboration</li>
-              <li>✓ Community support</li>
-              <li>✗ Advanced analytics</li>
-              <li>✗ Priority support</li>
+              <li><span className="check">✓</span> Access to 10 free tools</li>
+              <li><span className="check">✓</span> Basic templates</li>
+              <li><span className="check">✓</span> Community support</li>
+              <li><span className="check">✓</span> 1 project per month</li>
             </ul>
-            <button className="btn-secondary-outline">Get Started</button>
+            <button className="btn-primary">Get Started Free</button>
           </div>
 
           <div className="pricing-card featured">
             <div className="featured-badge">Most Popular</div>
-            <h3>Professional</h3>
-            <div className="price">$39<span>/month</span></div>
-            <p className="price-subtitle">Billed monthly</p>
+            <h3>Pro</h3>
+            <p className="price-description">Best for professionals</p>
+            <div className="price">$29<span>/Month</span></div>
             <ul className="features-list">
-              <li>✓ Unlimited projects</li>
-              <li>✓ Team collaboration</li>
-              <li>✓ Advanced analytics</li>
-              <li>✓ Priority support</li>
-              <li>✓ Custom integrations</li>
+              <li><span className="check">✓</span> Access to all premium tools</li>
+              <li><span className="check">✓</span> Unlimited templates</li>
+              <li><span className="check">✓</span> Priority support</li>
+              <li><span className="check">✓</span> Unlimited projects</li>
+              <li><span className="check">✓</span> Cloud sync</li>
+              <li><span className="check">✓</span> Advanced analytics</li>
             </ul>
-            <button className="btn-primary">Start Free Trial</button>
+            <button className="btn-featured">Start Pro Trial</button>
           </div>
 
           <div className="pricing-card">
             <h3>Enterprise</h3>
-            <div className="price">$99<span>/month</span></div>
-            <p className="price-subtitle">Custom pricing available</p>
+            <p className="price-description">For teams and businesses</p>
+            <div className="price">$99<span>/Month</span></div>
             <ul className="features-list">
-              <li>✓ Everything in Pro</li>
-              <li>✓ Dedicated support</li>
-              <li>✓ SLA guarantee</li>
-              <li>✓ Advanced security</li>
-              <li>✓ Custom contracts</li>
+              <li><span className="check">✓</span> Everything in Pro</li>
+              <li><span className="check">✓</span> Team collaboration</li>
+              <li><span className="check">✓</span> Custom integrations</li>
+              <li><span className="check">✓</span> Dedicated support</li>
+              <li><span className="check">✓</span> SLA guarantee</li>
+              <li><span className="check">✓</span> Custom branding</li>
             </ul>
-            <button className="btn-secondary-outline">Contact Sales</button>
+            <button className="btn-primary">Contact Sales</button>
           </div>
         </div>
       </section>
