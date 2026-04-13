@@ -97,16 +97,5 @@
     "tagType": null,
     "features": ["Real-time data", "Custom reports", "Export features"],
     "icon": "📊"
-  },
-  {
-    "id": 10,
-    "name": "Email Marketing Pro",
-    "description": "Advanced email marketing platform with automation and detailed analytics.",
-    "price": 44,
-    "period": "monthly",
-    "tag": "Best Seller",
-    "tagType": "best-seller",
-    "features": ["Unlimited emails", "A/B testing", "Template builder"],
-    "icon": "📧"
   }
 ]
